@@ -1,7 +1,6 @@
 const form = document.querySelector('#addForm');
 const itemsList = document.querySelector('#items');
 const textInput = document.querySelector('#newItemText');
-const deleteBtn = document.querySelector('button');
 
 
 // function addTodo(event) {
@@ -45,10 +44,17 @@ function addTodo(event) {
   }
 
   itemsList.insertAdjacentElement('afterbegin', itemTodo);
+  textInput.value = '';
+}
+
+function deleteTodo(event) {
+  if(event.target.getAttribute('data-action') === 'delete') {
+    event.target.parentNode.remove();
+  }
 }
 
 
 
-
 form.addEventListener('submit', addTodo);
+itemsList.addEventListener('click', deleteTodo);
 
