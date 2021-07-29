@@ -3,6 +3,11 @@ const itemsList = document.querySelector('#items');
 const textInput = document.querySelector('#newItemText');
 const searchInput = document.querySelector('#filter');
 
+form.addEventListener('submit', addTodo);
+itemsList.addEventListener('click', deleteTodo);
+searchInput.addEventListener('keyup', searchTodo);
+
+
 
 // function addTodo(event) {
 //   event.preventDefault();
@@ -74,17 +79,6 @@ function searchTodo(event) {
 
 
 
-form.addEventListener('submit', addTodo);
-itemsList.addEventListener('click', deleteTodo);
-searchInput.addEventListener('keyup', searchTodo);
 
 
-/*
-1. Получаем фразу из поиска и переводим в нижний регистр.
-2. Поиск
-  а) получаем список всех задач
-  б) перебераем циклом все найденые циклы li с задачами
-  в) получаем текст задачи из списка и переводим его в нижний регистр
-  г) проверяем вхоождение искомой подстроки в текст задачи
-  если вхождение есть, показываем элемент с задачей, если вхождение нет, скрываем элемент с задачей
-*/
+
