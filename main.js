@@ -1,6 +1,7 @@
 const form = document.querySelector('#addForm');
 const itemsList = document.querySelector('#items');
 const textInput = document.querySelector('#newItemText');
+const searchInput = document.querySelector('#filter');
 
 
 // function addTodo(event) {
@@ -53,8 +54,37 @@ function deleteTodo(event) {
   }
 }
 
+function searchTodo(event) {
+  const searchText = event.target.value.toLowerCase();
+  const todoLists = itemsList.querySelectorAll('li');
+
+  todoLists.forEach(function(item) {
+    let todoText = item.firstChild.textContent.toLowerCase();
+
+    if(todoText.indexOf(searchText) != -1) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  })
+}
+
+
+
+
 
 
 form.addEventListener('submit', addTodo);
 itemsList.addEventListener('click', deleteTodo);
+searchInput.addEventListener('keyup', searchTodo);
 
+
+/*
+1. Получаем фразу из поиска и переводим в нижний регистр.
+2. Поиск
+  а) получаем список всех задач
+  б) перебераем циклом все найденые циклы li с задачами
+  в) получаем текст задачи из списка и переводим его в нижний регистр
+  г) проверяем вхоождение искомой подстроки в текст задачи
+  если вхождение есть, показываем элемент с задачей, если вхождение нет, скрываем элемент с задачей
+*/
